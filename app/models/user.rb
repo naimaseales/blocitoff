@@ -5,5 +5,5 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   has_many :items
-  validates :name, presence: true
+  # validates :name, presence: true
 end

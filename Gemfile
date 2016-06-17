@@ -11,11 +11,21 @@ end
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
+  gem 'pry-rails'
+  gem 'pry-inline' # automatically shows variable values inline in rails console
+  gem 'rb-readline' # rb-readline makes pry history behave on all platforms (e.g. ensures ~/.pry_history auto loads)
+
+  # Use Faker to produce fake items for database seeding
+  gem 'faker'
 end
 
 group :development do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
+
+  gem 'better_errors' # Enhanced Rails error page with built-in rails console
+  gem 'binding_of_caller' # Required by better_errors
+  gem 'quiet_assets' # Less noisy but easier to debug server output
 end
 
 gem 'devise'
