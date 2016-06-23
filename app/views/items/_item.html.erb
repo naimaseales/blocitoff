@@ -1,8 +1,9 @@
-<% @user.items.each do |item| %>
-  <div class="media">
+<% @items.each do |item| %>
+  <div class="media" id="item-<%= item.id %>">
     <div class="media-body">
       <h4 class="media-heading">
         <%= item.name %>
+        <%= link_to "", item, method: :delete, remote: true, class: 'glyphicon glyphicon-ok' %>
       </h4>
       <small>
         submitted <%= time_ago_in_words(item.created_at) %> ago <br>

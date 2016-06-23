@@ -4,10 +4,13 @@ class ItemsController < ApplicationController
   end
 
   def create
-    # @user = User.find(params[:user_id])
-    # @item = @user.items.create(items_params)
+    @user = current_user
     @item = Item.new(item_params)
     @item.user = current_user
+    # @user = User.find(params[:user_id])
+    # @item = @user.items.create(items_params)
+    # @item = Item.new(item_params)
+    # @item.user = current_user
 
     if @item.save
       flash[:notice] = "New item has been saved!"
@@ -17,6 +20,23 @@ class ItemsController < ApplicationController
       render :new
     end
   end
+
+  def destroy
+    @item = current_user.items.find(params[:id])
+
+    if @item.destroy
+      flash[:notice] = "Item was deleted successfully."
+    else
+      flash[:alert] = "Item couldn't be deleted. Try again."
+    end
+
+    respond_to do |format|
+      # format.html { render :partial => 'item' }
+      format.js { render 'destroy' }
+    end
+  end
+
+  private
 
   def item_params
     params.require(:item).permit(:name, :user)
