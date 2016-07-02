@@ -10,6 +10,9 @@ group :production do
 end
 
 group :development, :test do
+  gem 'capybara'
+  gem 'factory_girl_rails'
+  gem 'selenium-webdriver' # used by JavaScript-dependent feature specs (`js: true`)
   gem 'rspec-rails', '~> 3.0'
   gem 'pry-rails'
   gem 'pry-inline' # automatically shows variable values inline in rails console
@@ -17,6 +20,10 @@ group :development, :test do
 
   # Use Faker to produce fake items for database seeding
   gem 'faker'
+end
+
+group :test do
+  gem 'database_cleaner'
 end
 
 group :development do
