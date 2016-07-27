@@ -3,7 +3,7 @@
     <div class="media-body">
       <h4 class="media-heading">
         <%= item.name %>
-        <%= link_to "", item, method: :delete, remote: true, class: 'glyphicon glyphicon-ok' %>
+        <%= link_to "", item, method: :delete, remote: true, class: 'glyphicon glyphicon-ok', title: "Delete", id: "delete-item-#{item.id}" %>
       </h4>
       <small>
         submitted <%= time_ago_in_words(item.created_at) %> ago <br>
